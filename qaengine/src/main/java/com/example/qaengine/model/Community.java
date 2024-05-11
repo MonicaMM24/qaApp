@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class CommunitySection {
+public class Community {
 
     @Id
 
@@ -14,11 +14,11 @@ public class CommunitySection {
 
     private String comment;
 
-    public CommunitySection() {
+    public Community() {
 
     }
 
-    public CommunitySection(String personName, String comment) {
+    public Community(String personName, String comment) {
         this.personName = personName;
         this.comment = comment;
     }

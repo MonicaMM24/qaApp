@@ -3,25 +3,24 @@ package com.example.qaengine.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.swing.plaf.PanelUI;
-
 @Document
-public class Tips {
+
+public class Certification {
     @Id
 
     private String id;
 
     private String title;
 
-    private String tipContent;
+    private String content;
 
-    public Tips() {
+    public Certification() {
 
     }
 
-    public Tips(String title, String tipContent) {
+    public Certification(String title, String content) {
         this.title = title;
-        this.tipContent = tipContent;
+        this.content = content;
     }
 
     public String getId() {
@@ -40,11 +39,12 @@ public class Tips {
         this.title = title;
     }
 
-    public String getTipContent() {
-        return tipContent;
+    public String getContent() {
+        return content;
     }
 
-    public void setTipContent(String tipContent) {
-        this.tipContent = tipContent;
+    public void setContent(String content) {
+        this.content = content;
     }
+
 }

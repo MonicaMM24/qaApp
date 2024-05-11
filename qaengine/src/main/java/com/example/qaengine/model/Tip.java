@@ -4,23 +4,22 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-
-public class Certifications {
+public class Tip {
     @Id
 
     private String id;
 
     private String title;
 
-    private String content;
+    private String tipContent;
 
-    public Certifications() {
+    public Tip() {
 
     }
 
-    public Certifications(String title, String content) {
+    public Tip(String title, String tipContent) {
         this.title = title;
-        this.content = content;
+        this.tipContent = tipContent;
     }
 
     public String getId() {
@@ -39,12 +38,11 @@ public class Certifications {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getTipContent() {
+        return tipContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setTipContent(String tipContent) {
+        this.tipContent = tipContent;
     }
-
 }
