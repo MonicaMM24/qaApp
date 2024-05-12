@@ -9,6 +9,8 @@ public class Question {
     @Id
 
     private String id;
+
+    private String title;
     private String description;
 
     public Question() {
@@ -16,6 +18,7 @@ public class Question {
     }
 
     public Question(String description) {
+        this.title = title;
         this.description = description;
     }
 
@@ -26,6 +29,15 @@ public class Question {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
 
     public String getDescription() {
         return description;
@@ -38,6 +50,7 @@ public class Question {
     public String toString() {
         return "Question{" +
                 "id='" + id + '\'' +
+                "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
