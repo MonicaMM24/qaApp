@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import './Home.css';
 import Register from "../Components/Auth/Register";
 import Popup from "../Components/Auth/Popup";
+
 const Home = () => {
     const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
     const [registeredUsers, setRegisteredUsers] = useState([]);
