@@ -1,0 +1,42 @@
+.car-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 10px 20px;
+    background-color: darkolivegreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.car-mode-toggle:hover {
+    background-color: darkkhaki;
+}
+
+.car-mode-popup {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    width: 300px;
+    background-color: darkolivegreen;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+button {
+    margin-top: 10px;
+    background-color: darkolivegreen;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkkhaki;
+}

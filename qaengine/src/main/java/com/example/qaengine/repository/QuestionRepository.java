@@ -1,7 +1,8 @@
 package com.example.qaengine.repository;
 
-import com.example.qaengine.model.Question;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
+import com.example.qaengine.model.Question;
 
 public interface QuestionRepository extends MongoRepository<Question, String> {
 }
