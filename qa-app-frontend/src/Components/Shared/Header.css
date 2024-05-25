@@ -1,0 +1,75 @@
+/* Reset some default styles */
+body, ul, li, h1, h2, h3, p, a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #BDB76BFF;
+}
+
+/* Navbar styles */
+header {
+    background-color: #556B2FFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+li {
+    margin: 0 10px;
+}
+
+a {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #555;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px;
+    }
+
+    ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    li {
+        margin: 5px 0;
+    }
+}
+
+/* Additional styles for active link */
+.active {
+    background-color: #007BFF;
+    border-radius: 4px;
+}
+
+/* Additional styles for hover effect */
+a:hover {
+    background-color: #575757;
+}

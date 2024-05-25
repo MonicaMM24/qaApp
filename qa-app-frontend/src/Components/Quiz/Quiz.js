@@ -89,7 +89,11 @@ const Quiz = () => {
     //Handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('Submit answers:', questions);
+        let questionsAnswers = questions.map(question => ({
+            questionId: question.id,
+            answer: question.answer
+        }));
+        console.log('Submit answers:', questionsAnswers);
         //Here you might want to send the responses to the server
     };
 
@@ -102,7 +106,7 @@ const Quiz = () => {
                     {question.options.map( option => (
                         <label key={option}>
                         <input
-                            type="boundary"
+                            type="radio"
                             name={`question_${question.id}`}
                             value={option}
                             checked={question.answer===option}

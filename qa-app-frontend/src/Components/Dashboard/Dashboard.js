@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import React from "react";
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -52,7 +51,8 @@ const Dashboard = () => {
         <div className="dashboard">
             <h1>Dashboard</h1>
             <div>
-                {loading ? <p>Loading...</p> : <Bar data={userData} />}
+                {/*{loading ? <p>Loading...</p> : <Bar data={userData} />}*/} // temporary disabled
+                <p>Loading...</p>
             </div>
             <button onClick={fetchData}>Refresh Data</button>
         </div>
