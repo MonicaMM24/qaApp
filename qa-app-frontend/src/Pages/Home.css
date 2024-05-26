@@ -1,9 +1,9 @@
-/* Home.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #53ff7e;
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 h2 {
@@ -37,19 +37,6 @@ li {
     margin: 10px;
 }
 
-a {
-    text-decoration: none;
-    color: #53ff82;
-    background: #5b984d;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-a:hover {
-    background: #53ff7e;
-}
-
 .container {
     background: #fff;
     max-width: 800px;
@@ -63,18 +50,4 @@ a:hover {
     width: 100%;
     height: auto;
     border-radius: 10px 10px 0 0;
-}
-
-
-.register-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #4caf50;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.register-button:hover {
-    background-color: #45a049;
 }

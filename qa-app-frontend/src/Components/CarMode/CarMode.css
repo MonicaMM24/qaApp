@@ -27,7 +27,7 @@
     z-index: 1000;
 }
 
-button {
+.button {
     margin-top: 10px;
     background-color: darkolivegreen;
     color: white;
@@ -37,6 +37,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.button:hover {
     background-color: darkkhaki;
 }

@@ -1,75 +1,93 @@
 /* Reset some default styles */
-body, ul, li, h1, h2, h3, p, a {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
+body,
+ul,
+li,
+h1,
+h2,
+h3,
+p,
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
 }
 
 /* General styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #BDB76BFF;
+  font-family: "Arial", sans-serif;
+  background-color: #bdb76bff;
 }
 
-/* Navbar styles */
-header {
-    background-color: #556B2FFF;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.header {
+  background-color: #333;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header li {
+    color: #fff;
 }
 
 nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 20px;
+  max-width: 1200px;
+  padding: 10px 20px;
 }
 
 ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 li {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
-a {
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+.link {
+  color: white;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-a:hover {
-    background-color: #555;
+.link:hover {
+  background-color: #555;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-    nav {
-        padding: 10px;
-    }
+  nav {
+    padding: 10px;
+  }
 
-    ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    li {
-        margin: 5px 0;
-    }
+  li {
+    margin: 5px 0;
+  }
 }
 
 /* Additional styles for active link */
 .active {
-    background-color: #007BFF;
-    border-radius: 4px;
+  background-color: #007bff;
+  border-radius: 4px;
 }
 
 /* Additional styles for hover effect */
 a:hover {
-    background-color: #575757;
+  background-color: #575757;
 }

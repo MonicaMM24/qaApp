@@ -3,9 +3,9 @@ import './Register.css';
 
 const Register = ({ closePopup, saveUser }) => {
     const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: ''
+        username: 'Moni',
+        email: 'moni@email.com',
+        password: 'moni'
     });
 
     const handleChange = (e) => {
@@ -25,7 +25,7 @@ const Register = ({ closePopup, saveUser }) => {
     return (
         <div className="register-popup">
             <div className="register-popup-content">
-                <h2>Register</h2>
+                <h2 className="title">Register</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Username:</label>
@@ -57,9 +57,9 @@ const Register = ({ closePopup, saveUser }) => {
                             required
                         />
                     </div>
-                    <button type="submit">Register</button>
+                    <button className="button" type="submit">Register</button>
                 </form>
-                <button onClick={closePopup} className="close-button">Close</button>
+                <a onClick={closePopup} className="close-button">X</a>
             </div>
         </div>
     );

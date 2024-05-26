@@ -3,7 +3,7 @@ import './Dashboard.css';
 
 const Dashboard = () => {
     const [userData, setUserData] = useState({
-        labels: ['MockQuiz 1', 'MockQuiz 2', 'MockQuiz 3'],
+        labels: ['ISTQB Foundation Mock Test1', 'ISTQB Foundation Mock Test2', 'ISTQB Foundation Mock Test3'],
         datasets: [
             {
                 label: 'Your Score',
@@ -24,7 +24,7 @@ const Dashboard = () => {
         //Simulate an API call
         setTimeout(() => {
             setUserData({
-                labels: ['MockQuiz 1', 'MockQuiz 2', 'MockQuiz 3'],
+                labels: ['ISTQB Foundation Mock Test1', 'ISTQB Foundation Mock Test2', 'ISTQB Foundation Mock Test3'],
                 datasets: [
                     {
                         label: 'Your Score',
@@ -51,7 +51,7 @@ const Dashboard = () => {
         <div className="dashboard">
             <h1>Dashboard</h1>
             <div>
-                {/*{loading ? <p>Loading...</p> : <Bar data={userData} />}*/} // temporary disabled
+                {/*{{loading ? <p>Loading...</p> : <Bar data={userData} />}} // temporary disabled*/}
                 <p>Loading...</p>
             </div>
             <button onClick={fetchData}>Refresh Data</button>
