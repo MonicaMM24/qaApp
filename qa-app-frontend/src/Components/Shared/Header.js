@@ -8,7 +8,7 @@ import "./Header.css";
 import logo from "./../../logo.png";
 import LoginPage from "../../Pages/LoginPage";
 
-const Header = () => {
+const Header = ({setAuthState}) => {
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [registeredUsers, setRegisteredUsers] = useState([]);
@@ -33,6 +33,7 @@ const Header = () => {
   const saveUser = (user) => {
     setRegisteredUsers([...registeredUsers, user]);
     setIsLoggedIn(true);
+    setAuthState(true);
   };
 
   const logOut = () => {

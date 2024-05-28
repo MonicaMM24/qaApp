@@ -13,16 +13,17 @@ import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
+import Quiz from "./Components/Quiz/Quiz";
 
 const initialSteps = [
   {
     id: "0",
-    message: "Hello, what is your name?",
+    message: "Hello! Welcome to your support chatbot!",
     trigger: "1",
   },
   {
     id: "1",
-    message: "Please write your username",
+    message: "What is your name?",
     trigger: "2",
   },
   {
@@ -38,14 +39,15 @@ const initialSteps = [
   {
     id: "4",
     options: [
-      { value: 1, label: "Recommend me more questions", trigger: "recommend" },
+      { value: 1, label: "Recommend me more quizzes", trigger: "recommend" },
       { value: 2, label: "Explain my wrong answers", trigger: "explain" },
     ],
   },
   {
     id: "recommend",
-    message:
-      "Sure, I recommend you to try these questions: [Question 1, Question 2]",
+    component: (
+      <QuizList />
+    ),
     end: true,
   },
   {
@@ -56,7 +58,8 @@ const initialSteps = [
   {
     id: "show_explanations",
     message: "Here are the explanations:",
-    end: true,
+    trigger: "explain_0",
+
   },
   {
     id: "reset",
@@ -83,31 +86,39 @@ const config = {
 
 function App() {
   const [chatBotSteps, setChatBotSteps] = useState(initialSteps);
-  let isLoggedIn = false;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [hasSubmittedQuiz, setHasSubmittedQuiz] = useState(false);
+  const setAuthState = (isLoggedIn) => {
+    setIsLoggedIn(isLoggedIn)
+  }
 
   const handleQuizResults = (results) => {
+  
     const wrongAnswers = results.filter((result) => !result.isCorrect);
+    console.log(wrongAnswers)
     const explanations = wrongAnswers.map((result, index) => ({
       id: `explain_${index}`,
       message: `Question: ${result.questionId}, Your answer: ${result.userAnswer}, Correct answer: ${result.correctAnswer}. Explanation: ${result.explanation}`,
       end: false,
       trigger:
         index === wrongAnswers.length - 1
-          ? "show_explanations"
+          ? "reset"
           : `explain_${index + 1}`,
     }));
+    console.log(explanations)
 
     setChatBotSteps([
       ...initialSteps.slice(0, 5), // Steps before the explanation option
       ...explanations, // Dynamic explanations
       ...initialSteps.slice(5), // Steps after the explanation option
     ]);
+    setHasSubmittedQuiz(true)
   };
 
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header setAuthState={setAuthState} />
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -115,7 +126,11 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route
               path="/quiz"
-              element={<QuizList handleQuizResults={handleQuizResults} />}
+              element={<QuizList />}
+            />
+            <Route
+              path="/quiz/:id"
+              element={<Quiz handleQuizResults={handleQuizResults} />}
             />
             <Route path="/community" element={<Community />} />
             <Route path="/car-mode" element={<CarMode />} />
@@ -123,7 +138,7 @@ function App() {
           </Routes>
         </div>
         <ThemeProvider theme={theme}>
-          {isLoggedIn && <ChatBot
+          {isLoggedIn && hasSubmittedQuiz && <ChatBot
             headerTitle="Ask for support"
             steps={chatBotSteps}
             {...config}

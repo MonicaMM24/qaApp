@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const QuizList = () => {
     const list = [
-        {title: 'Quiz 1'},
-        {title: 'Quiz 2'},
-        {title: 'Quiz 3'},
+        {title: 'ISTQB Foundation Quiz'},
+        {title: 'Agile Tester Quiz'},
+        {title: 'Test Automation Engineer'},
     ]
   return (
     <ol className="list">
