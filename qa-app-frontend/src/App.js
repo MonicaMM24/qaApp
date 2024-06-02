@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage";
 import Home from "./Pages/Home";
@@ -14,6 +14,10 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 import Quiz from "./Components/Quiz/Quiz";
+import botlogo from "./botlogo.png";
+
+
+
 
 const initialSteps = [
   {
@@ -69,18 +73,18 @@ const initialSteps = [
 ];
 
 const theme = {
-  background: "#C9FF8F",
-  headerBgColor: "#197B22",
+  background: "#F0FFF0",
+  headerBgColor: "#4caf50",
   headerFontSize: "20px",
-  botBubbleColor: "#0F3789",
+  botBubbleColor: "#4caf50",
   headerFontColor: "white",
   botFontColor: "white",
-  userBubbleColor: "#FF5733",
+  userBubbleColor: "#ACE1AF",
   userFontColor: "white",
 };
 
 const config = {
-  botAvatar: "botlogo.jpg",
+  botAvatar: botlogo,
   floating: true,
 };
 
@@ -88,14 +92,13 @@ function App() {
   const [chatBotSteps, setChatBotSteps] = useState(initialSteps);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [hasSubmittedQuiz, setHasSubmittedQuiz] = useState(false);
+  const [lastSubmittedResults, setLastSubmittedResults] = useState([]);
   const setAuthState = (isLoggedIn) => {
     setIsLoggedIn(isLoggedIn)
   }
 
   const handleQuizResults = (results) => {
-  
     const wrongAnswers = results.filter((result) => !result.isCorrect);
-    console.log(wrongAnswers)
     const explanations = wrongAnswers.map((result, index) => ({
       id: `explain_${index}`,
       message: `Question: ${result.questionId}, Your answer: ${result.userAnswer}, Correct answer: ${result.correctAnswer}. Explanation: ${result.explanation}`,
@@ -105,7 +108,6 @@ function App() {
           ? "reset"
           : `explain_${index + 1}`,
     }));
-    console.log(explanations)
 
     setChatBotSteps([
       ...initialSteps.slice(0, 5), // Steps before the explanation option
@@ -113,7 +115,15 @@ function App() {
       ...initialSteps.slice(5), // Steps after the explanation option
     ]);
     setHasSubmittedQuiz(true)
+    setLastSubmittedResults(results);
   };
+
+    const handleQuizSelected = () => {
+    setChatBotSteps([
+      ...initialSteps.slice(3, 5)
+    ]);
+    setHasSubmittedQuiz(false);
+    }
 
   return (
     <Router>
@@ -123,14 +133,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard lastSubmittedResults={lastSubmittedResults} />} />
             <Route
               path="/quiz"
               element={<QuizList />}
             />
             <Route
               path="/quiz/:id"
-              element={<Quiz handleQuizResults={handleQuizResults} />}
+              element={<Quiz handleQuizResults={handleQuizResults} handleQuizSelected={handleQuizSelected} />}
             />
             <Route path="/community" element={<Community />} />
             <Route path="/car-mode" element={<CarMode />} />

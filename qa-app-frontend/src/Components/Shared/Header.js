@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Popup from "../../Components/Auth/Popup";
 import Register from "../../Components/Auth/Register";
 import "../../Pages/Home";
@@ -13,6 +13,7 @@ const Header = ({setAuthState}) => {
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [registeredUsers, setRegisteredUsers] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const openRegisterPopup = () => {
     setIsRegisterPopupOpen(true);
@@ -38,6 +39,7 @@ const Header = ({setAuthState}) => {
 
   const logOut = () => {
     setIsLoggedIn(false);
+    navigate('/');
   }
 
   return (

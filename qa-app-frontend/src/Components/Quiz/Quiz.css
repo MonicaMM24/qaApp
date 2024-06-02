@@ -30,7 +30,6 @@ h1 {
 
 .option-box {
     display: inline-block;
-    padding: 10px;
     margin: 5px;
     border: 1px solid #080907;
     border-radius: 5px;
@@ -41,6 +40,11 @@ h1 {
 
 .option-box input {
     display: none;
+}
+
+.option-box label {
+    padding: 10px;
+    display: block;
 }
 
 .option-box.selected {

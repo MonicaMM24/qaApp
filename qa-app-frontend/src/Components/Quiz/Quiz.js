@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import axios from "axios";
-import './Quiz.css'; 
+import React, { useState, useEffect } from 'react';
+import './Quiz.css';
 import { useParams } from 'react-router-dom';
 import { quizzes } from '../../Constants/Quizzes';
 
-const Quiz = ({ handleQuizResults }) => {
+const Quiz = ({ handleQuizResults, handleQuizSelected }) => {
     // Quiz questions data
 
     const { id } = useParams();
@@ -12,6 +11,12 @@ const Quiz = ({ handleQuizResults }) => {
 
     const [userAnswers, setUserAnswers] = useState({});
     const [submitted, setSubmitted] = useState(false);
+
+    useEffect(() => {
+    setUserAnswers({});
+    setSubmitted(false);
+    handleQuizSelected();
+    }, [id]);
 
     // Handle options change
     const handleOptionChange = (questionId, option) => {
@@ -30,7 +35,8 @@ const Quiz = ({ handleQuizResults }) => {
             userAnswer: userAnswers[question.id] || null,
             correctAnswer: question.answer,
             explanation: question.explanation,
-            isCorrect: userAnswers[question.id] === question.answer
+            isCorrect: userAnswers[question.id] === question.answer,
+            quizName: quiz.quizName
         }));
         handleQuizResults(questionsAnswers);
     };

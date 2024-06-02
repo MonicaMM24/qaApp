@@ -5,7 +5,7 @@ const Register = ({ closePopup, saveUser }) => {
     const [formData, setFormData] = useState({
         username: 'Moni',
         email: 'moni@email.com',
-        password: 'moni'
+        password: 'Password123!@#'
     });
 
     const handleChange = (e) => {

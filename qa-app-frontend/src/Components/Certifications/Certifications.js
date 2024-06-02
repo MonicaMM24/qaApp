@@ -1,5 +1,9 @@
 import React from "react";
-import './Certifications.css'; // Import the CSS file
+import './Certifications.css';
+import photo1 from './photo1.png'; // Import the image file
+import photo2 from './photo2.png'; // Import the image file
+import photo3 from './photo3.png'; // Import the image file
+// Import the CSS file
 
 
 const Certifications = () => {
@@ -8,15 +12,15 @@ const Certifications = () => {
             <h2>Certifications</h2>
             <div className="certifications-grid">
                 <div className="certification-item">
-                    <img src="src/Components/certifications/photo1.png" alt="Certification 1" />
+                    <img src={photo1} alt="Certification 1" />
                     <p>Certification Name 1</p>
                 </div>
                 <div className="certification-item">
-                    <img src="./photo2.png" alt="Certification 2" />
+                    <img src={photo2} alt="Certification 2" />
                     <p>Certification Name 2</p>
                 </div>
                 <div className="certification-item">
-                    <img src="./photo3.png" alt="Certification 3" />
+                    <img src={photo3} alt="Certification 3" />
                     <p>Certification Name 3</p>
                 </div>
             </div>

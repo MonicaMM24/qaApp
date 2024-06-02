@@ -13,11 +13,11 @@ import java.util.List;
 public class QuestionController {
 
     @Autowired
-    private QuestionRepository questionRepository;
+    public QuestionRepository questionRepository;
 
-    @GetMapping
 
-    public List<Question> getAllQuestions() {
+    @GetMapping(produces = "application/json")
+    private List<Question> getAllQuestions() {
         return questionRepository.findAll();
     }
 

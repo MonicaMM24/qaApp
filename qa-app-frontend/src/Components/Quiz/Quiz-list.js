@@ -1,6 +1,6 @@
 import React from "react";
-import "./Quiz-list.css";
 import { Link } from "react-router-dom";
+import './Quiz-list.css';
 
 const QuizList = () => {
     const list = [
@@ -12,7 +12,7 @@ const QuizList = () => {
     <ol className="list">
       {
         list.map((quiz, index) => (
-            <li>
+            <li key={quiz.title}>
               <Link to={"/quiz/" + index}>{quiz.title}</Link>
             </li>
         ))
