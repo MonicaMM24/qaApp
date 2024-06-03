@@ -1,47 +1,65 @@
-/* Community.css */
-
+/* Community container styling */
 .community {
     padding: 20px;
+    background-color: #f0f4f3; /* Light warm green background */
 }
 
+/* Community heading styling */
 .community h1 {
     text-align: center;
-    color: #333;
+    color: #2d6a4f; /* Warm green tone */
     margin-bottom: 20px;
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: 'Cambria Math', sans-serif;
 }
 
+/* Posts container grid styling */
 .posts-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px; /* Space between posts */
 }
 
+/* Individual post styling */
 .post {
-    background: #f5f5f5;
+    background: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     box-sizing: border-box;
     height: 400px; /* Fixed height for consistency */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Post title styling */
 .post h2 {
     margin-top: 0;
+    color: #2d6a4f; /* Warm green tone */
+    font-size: 1.5em;
 }
 
+/* Comments section styling */
 .comments {
     margin-top: 20px;
     overflow-y: auto;
-    max-height: 200px; /* Ensure comments do not exceed a certain height */
+    max-height: 100px; /* Ensure comments do not exceed a certain height */
 }
 
 .comments h3 {
     margin-bottom: 10px;
+    color: rgba(59, 59, 56, 0.98); /* Warm green tone */
 }
 
+/* Individual comment styling */
 .comment {
     display: flex;
     align-items: center;
@@ -50,18 +68,19 @@
 
 .comment i {
     margin-right: 10px;
-    color: #333;
+    color: rgba(59, 59, 56, 0.98); /* Warm green tone */
 }
 
 .comment p {
-    background: #fff;
+    background: #ffffff;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 0;
     flex: 1;
 }
 
+/* Delete button styling */
 .delete-button {
     background: none;
     border: none;
@@ -69,9 +88,9 @@
     cursor: pointer;
     margin-left: 10px;
     position: relative;
-    position: center;
 }
 
+/* Form for adding comments */
 .comments form {
     display: flex;
     gap: 10px;
@@ -89,12 +108,13 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #4caf50;
-    color: white;
+    background-color: #4caf50; /* Green color */
+    color: rgba(59, 59, 56, 0.98);
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
 .comments button:hover {
-    background-color: #45a049;
+    background-color: #5b984d; /* Darker green on hover */
 }

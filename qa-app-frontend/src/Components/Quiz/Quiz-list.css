@@ -1,0 +1,53 @@
+/* Reset some basic elements */
+body, ol, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body styling */
+.body {
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Ordered list styling */
+.list {
+    list-style-type: decimal;
+    padding-left: 20px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+/* List item styling */
+.list li {
+    margin: 10px 0;
+}
+
+/* Link styling */
+.list li a {
+    text-decoration: none;
+    color: #2d6a4f; /* Warm green tone */
+    font-size: 1.1em;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for links */
+.list li a:hover {
+    background-color: #95d5b2; /* Light green for hover */
+    color: #fff;
+}

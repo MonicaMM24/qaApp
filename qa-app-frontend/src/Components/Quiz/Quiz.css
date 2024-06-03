@@ -11,11 +11,11 @@
 
 h1 {
     text-align: center;
-    color: #dcffca;
+    color: #5b984d;
     margin-bottom: 20px;
-    background-color: #556B2FFF;
+    background-color: #f0f4f3;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgb(220, 255, 202);
+    box-shadow: 0 2px 4px rgb(240, 244, 243);
     font-style: italic;
 }
 
@@ -97,7 +97,7 @@ h1 {
     width: 30%;
     margin: 10px 10px;
     padding: 20px;
-    background: #d9ffd6;
+    background: #f0f4f3;
     border: 1px solid #5b984d;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

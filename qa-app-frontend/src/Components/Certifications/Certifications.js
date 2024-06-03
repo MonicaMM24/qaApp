@@ -13,15 +13,15 @@ const Certifications = () => {
             <div className="certifications-grid">
                 <div className="certification-item">
                     <img src={photo1} alt="Certification 1" />
-                    <p>Certification Name 1</p>
+                    <p>Certified Tester Foundation Level</p>
                 </div>
                 <div className="certification-item">
-                    <img src={photo2} alt="Certification 2" />
-                    <p>Certification Name 2</p>
+                    <img src={photo2} alt="Certification 2" id="emphasized-image" />
+                    <p> Certified Tester Automotive Software Tester</p>
                 </div>
                 <div className="certification-item">
                     <img src={photo3} alt="Certification 3" />
-                    <p>Certification Name 3</p>
+                    <p>Certified Tester Advanced Level Agile Technical Tester</p>
                 </div>
             </div>
         </div>
