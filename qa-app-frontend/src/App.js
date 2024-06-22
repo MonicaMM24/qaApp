@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage";
 import Home from "./Pages/Home";
@@ -15,9 +15,6 @@ import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 import Quiz from "./Components/Quiz/Quiz";
 import botlogo from "./botlogo.png";
-
-
-
 
 const initialSteps = [
   {
@@ -44,18 +41,16 @@ const initialSteps = [
     id: "4",
     options: [
       { value: 1, label: "Recommend me more quizzes", trigger: "recommend" },
-      { value: 2, label: "Explain my wrong answers", trigger: "explain" },
+      { value: 2, label: "Explain my wrong answers", trigger: "explain_0" },
     ],
   },
   {
     id: "recommend",
-    component: (
-      <QuizList />
-    ),
+    component: <QuizList />,
     end: true,
   },
   {
-    id: "explain",
+    id: "explain_0",
     message: "Let me explain your wrong answers.",
     trigger: "show_explanations",
   },
@@ -63,7 +58,6 @@ const initialSteps = [
     id: "show_explanations",
     message: "Here are the explanations:",
     trigger: "explain_0",
-
   },
   {
     id: "reset",
@@ -74,9 +68,9 @@ const initialSteps = [
 
 const theme = {
   background: "#F0FFF0",
-  headerBgColor: "#4caf50",
+  headerBgColor: "#ACE1AF",
   headerFontSize: "20px",
-  botBubbleColor: "#4caf50",
+  botBubbleColor: "#ACE1AF",
   headerFontColor: "white",
   botFontColor: "white",
   userBubbleColor: "#ACE1AF",
@@ -92,71 +86,75 @@ function App() {
   const [chatBotSteps, setChatBotSteps] = useState(initialSteps);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [hasSubmittedQuiz, setHasSubmittedQuiz] = useState(false);
-  const [lastSubmittedResults, setLastSubmittedResults] = useState([]);
+  const [allQuizResults, setAllQuizResults] = useState([]);
+  const [isChatBotVisible, setIsChatBotVisible] = useState(false); // Initial state is false
+
   const setAuthState = (isLoggedIn) => {
-    setIsLoggedIn(isLoggedIn)
-  }
+    setIsLoggedIn(isLoggedIn);
+  };
 
   const handleQuizResults = (results) => {
+    console.log("Results received:", results);
+
     const wrongAnswers = results.filter((result) => !result.isCorrect);
     const explanations = wrongAnswers.map((result, index) => ({
       id: `explain_${index}`,
       message: `Question: ${result.questionId}, Your answer: ${result.userAnswer}, Correct answer: ${result.correctAnswer}. Explanation: ${result.explanation}`,
       end: false,
-      trigger:
-        index === wrongAnswers.length - 1
-          ? "reset"
-          : `explain_${index + 1}`,
+      trigger: index === wrongAnswers.length - 1 ? "reset" : `explain_${index + 1}`,
     }));
 
-    setChatBotSteps([
-      ...initialSteps.slice(0, 5), // Steps before the explanation option
+    const newSteps = [
+      ...initialSteps.slice(0, 8), // Steps before the dynamic explanations
       ...explanations, // Dynamic explanations
-      ...initialSteps.slice(5), // Steps after the explanation option
-    ]);
-    setHasSubmittedQuiz(true)
-    setLastSubmittedResults(results);
+      initialSteps[initialSteps.length - 1], // The final reset step
+    ];
+
+    setChatBotSteps(newSteps);
+    setHasSubmittedQuiz(true);
+    setAllQuizResults((prevResults) => [...prevResults, results]);
+    setIsChatBotVisible(true); // Ensure chatbot remains visible after quiz submission
   };
 
-    const handleQuizSelected = () => {
-    setChatBotSteps([
-      ...initialSteps.slice(3, 5)
-    ]);
+  const handleQuizSelected = () => {
+    setChatBotSteps(initialSteps);
     setHasSubmittedQuiz(false);
-    }
+    setIsChatBotVisible(false); // Hide the chatbot when a new quiz is selected
+  };
+
+  const activateChatBot = (results) => {
+    handleQuizResults(results);
+    setHasSubmittedQuiz(true);
+    setIsChatBotVisible(true); // Ensure chatbot remains visible after quiz submission
+  };
 
   return (
-    <Router>
-      <div className="App">
-        <Header setAuthState={setAuthState} />
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard" element={<Dashboard lastSubmittedResults={lastSubmittedResults} />} />
-            <Route
-              path="/quiz"
-              element={<QuizList />}
-            />
-            <Route
-              path="/quiz/:id"
-              element={<Quiz handleQuizResults={handleQuizResults} handleQuizSelected={handleQuizSelected} />}
-            />
-            <Route path="/community" element={<Community />} />
-            <Route path="/car-mode" element={<CarMode />} />
-            <Route path="/certifications" element={<Certifications />} />
-          </Routes>
+      <Router>
+        <div className="App">
+          <Header setAuthState={setAuthState} />
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/dashboard" element={<Dashboard allQuizResults={allQuizResults} />} />
+              <Route path="/quiz" element={<QuizList activateChatBot={activateChatBot} handleQuizSelected={handleQuizSelected} />} />
+              <Route
+                  path="/quiz/:id"
+                  element={<Quiz handleQuizResults={handleQuizResults} handleQuizSelected={handleQuizSelected} />}
+              />
+              <Route path="/community" element={<Community />} />
+              <Route path="/car-mode" element={<CarMode />} />
+              <Route path="/certifications" element={<Certifications />} />
+            </Routes>
+          </div>
+          <ThemeProvider theme={theme}>
+            {isLoggedIn && isChatBotVisible && (
+                <ChatBot headerTitle="Ask for support" steps={chatBotSteps} {...config} />
+            )}
+          </ThemeProvider>
+          <Footer />
         </div>
-        <ThemeProvider theme={theme}>
-          {isLoggedIn && hasSubmittedQuiz && <ChatBot
-            headerTitle="Ask for support"
-            steps={chatBotSteps}
-            {...config}
-          />}
-        </ThemeProvider>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
   );
 }
 
