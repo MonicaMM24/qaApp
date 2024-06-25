@@ -1,4 +1,4 @@
 package com.example.qaengine.service;
 
-public class ChatBotResponseService {
+public class QuizService {
 }

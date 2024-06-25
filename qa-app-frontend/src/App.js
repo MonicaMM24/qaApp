@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import LoginPage from "./Pages/LoginPage";
+import Login from "./Components/Auth/Login";
 import Home from "./Pages/Home";
 import Dashboard from "./Components/Dashboard/Dashboard";
-import QuizList from "./Components/Quiz/Quiz-list";
+import QuizList from "./Components/Quiz/QuizList";
 import Community from "./Components/Community/Community";
 import CarMode from "./Components/CarMode/CarMode";
 import Certifications from "./Components/Certifications/Certifications";
@@ -15,6 +15,7 @@ import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 import Quiz from "./Components/Quiz/Quiz";
 import botlogo from "./botlogo.png";
+import ResultChart from "./Components/Dashboard/ResultChart";
 
 const initialSteps = [
   {
@@ -85,12 +86,16 @@ const config = {
 function App() {
   const [chatBotSteps, setChatBotSteps] = useState(initialSteps);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authToken, setAuthToken] = useState("");
   const [hasSubmittedQuiz, setHasSubmittedQuiz] = useState(false);
   const [allQuizResults, setAllQuizResults] = useState([]);
   const [isChatBotVisible, setIsChatBotVisible] = useState(false); // Initial state is false
 
   const setAuthState = (isLoggedIn) => {
     setIsLoggedIn(isLoggedIn);
+  };
+  const handleLoginSuccess = (token) => {
+    console.log("Logged in with token:", token);
   };
 
   const handleQuizResults = (results) => {
@@ -135,15 +140,11 @@ function App() {
           <div className="content">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/login" element={<LoginPage />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard allQuizResults={allQuizResults} />} />
               <Route path="/quiz" element={<QuizList activateChatBot={activateChatBot} handleQuizSelected={handleQuizSelected} />} />
-              <Route
-                  path="/quiz/:id"
-                  element={<Quiz handleQuizResults={handleQuizResults} handleQuizSelected={handleQuizSelected} />}
-              />
+              <Route path="/quiz/:id" element={<Quiz handleQuizResults={handleQuizResults} handleQuizSelected={handleQuizSelected} />} />
               <Route path="/community" element={<Community />} />
-              <Route path="/car-mode" element={<CarMode />} />
               <Route path="/certifications" element={<Certifications />} />
             </Routes>
           </div>
@@ -152,6 +153,7 @@ function App() {
                 <ChatBot headerTitle="Ask for support" steps={chatBotSteps} {...config} />
             )}
           </ThemeProvider>
+          <CarMode /> {/* CarMode component added here */}
           <Footer />
         </div>
       </Router>

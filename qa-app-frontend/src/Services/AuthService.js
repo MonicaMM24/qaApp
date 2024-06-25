@@ -1,19 +1,13 @@
-const API_URL = 'http://localhost:8080/api';
-
-async function login(username, password) {
-    const response = await fetch('${API_URL}/login', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json' },
-        body: JSON.stringify({username, password}),
-    });
-    if (response.ok) {
-        const data = await response.json();
-        return data.token; //Assuming the server responds with a token
-    } else {
-        throw new Error('Failed to login');
+// Services/AuthService.js
+const AuthService = {
+    login: async (username, password) => {
+        // Simulate an API call to authenticate the user
+        if (username === 'Moni' && password === 'Password123!@#') {
+            return 'fake-jwt-token';
+        } else {
+            throw new Error('Invalid username or password');
+        }
     }
-}
-
-export default {
-    login,
 };
+
+export default AuthService;

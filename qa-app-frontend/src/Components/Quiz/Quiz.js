@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './Quiz.css';
 import { quizzes } from '../../Constants/Quizzes';
+import SoundAnalyzer from '../SoundAnalyzer/SoundAnalyzer';
 
-const Quiz = ({ quizId, handleQuizResults, handleQuizSelected, activateChatBot }) => {
+const Quiz = ({ quizId, handleQuizResults, handleQuizSelected, activateChatBot, closeQuiz }) => {
     const quiz = quizzes[quizId];
 
     const [userAnswers, setUserAnswers] = useState({});
     const [submitted, setSubmitted] = useState(false);
+    const [soundDetected, setSoundDetected] = useState(false);
+    const [quizActive, setQuizActive] = useState(true);
 
     useEffect(() => {
-        setUserAnswers({});
-        setSubmitted(false);
-        if (handleQuizSelected) handleQuizSelected();
-    }, [quizId]);
-
-    if (!quiz) {
-        return <div>Quiz not found</div>;
-    }
+        return () => {
+            setQuizActive(false);
+        };
+    }, []);
 
     const handleOptionChange = (questionId, option) => {
         setUserAnswers({
@@ -38,6 +37,14 @@ const Quiz = ({ quizId, handleQuizResults, handleQuizSelected, activateChatBot }
         }));
         if (handleQuizResults) handleQuizResults(questionsAnswers);
         if (activateChatBot) activateChatBot(questionsAnswers); // Trigger the chatbot activation
+        setQuizActive(false); // Stop sound analyzer when quiz is submitted
+        closeQuiz(); // Notify parent to close quiz
+    };
+
+    const handleSoundDetected = (average) => {
+        console.log('Sound detected with average volume:', average);
+        setSoundDetected(true);
+        // Here you can add any additional logic to handle detected sounds
     };
 
     return (
@@ -76,6 +83,7 @@ const Quiz = ({ quizId, handleQuizResults, handleQuizSelected, activateChatBot }
                 ))}
                 <button type="submit" className="submit-button">Submit Answers</button>
             </form>
+            <SoundAnalyzer onSoundDetected={handleSoundDetected} quizActive={quizActive} /> {/* Added SoundAnalyzer */}
         </div>
     );
 };

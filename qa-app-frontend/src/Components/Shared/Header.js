@@ -4,9 +4,10 @@ import Popup from "../../Components/Auth/Popup";
 import Register from "../../Components/Auth/Register";
 import "../../Pages/Home";
 import "./Header.css";
+import Login from "../../Components/Auth/Login";
 
 import logo from "./../../logo.png";
-import LoginPage from "../../Pages/LoginPage";
+
 
 const Header = ({setAuthState}) => {
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
@@ -37,6 +38,20 @@ const Header = ({setAuthState}) => {
     setAuthState(true);
   };
 
+  const authenticateUser = (user) => {
+    const isUserRegistered = registeredUsers.some(
+      (registeredUser) =>
+        registeredUser.email === user.email &&
+        registeredUser.password === user.password
+    );
+    if (isUserRegistered) {
+      setIsLoggedIn(true);
+      setAuthState(true);
+    } else {
+      alert("Invalid email or password");
+    }
+  }
+
   const logOut = () => {
     setIsLoggedIn(false);
     navigate('/');
@@ -61,9 +76,6 @@ const Header = ({setAuthState}) => {
               <Link className="link" to="/community">Community</Link>
             </li>
             <li>
-              <Link className="link" to="/car-mode">Car Mode</Link>
-            </li>
-            <li>
               <Link className="link" to="/certifications">Certifications</Link>
             </li>
             <li>
@@ -86,7 +98,7 @@ const Header = ({setAuthState}) => {
             </li>
             {isLoginPopupOpen && (
               <Popup closePopup={closeLoginPopup}>
-                <LoginPage closePopup={closeLoginPopup} saveUser={saveUser} />
+                <Login closePopup={closeLoginPopup} authenticateUser={authenticateUser} />
               </Popup>
             )}
             {isRegisterPopupOpen && (

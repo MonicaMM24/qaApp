@@ -30,6 +30,10 @@ const customStyles = {
 };
 
 const QuizModal = ({ isOpen, onRequestClose, quizId, closeModal, handleQuizResults, activateChatBot, handleQuizSelected }) => {
+    const closeQuiz = () => {
+        closeModal();
+    };
+
     return (
         <Modal
             isOpen={isOpen}
@@ -43,8 +47,9 @@ const QuizModal = ({ isOpen, onRequestClose, quizId, closeModal, handleQuizResul
                 quizId={quizId}
                 closeModal={closeModal}
                 handleQuizResults={handleQuizResults}
-                activateChatBot={activateChatBot}
-                handleQuizSelected={handleQuizSelected} // Pass the handleQuizSelected function
+                activateChatBot={activateChatBot} // Pass the activateChatBot function
+                handleQuizSelected={handleQuizSelected}
+                closeQuiz={closeQuiz} // Add closeQuiz prop
             />
         </Modal>
     );
