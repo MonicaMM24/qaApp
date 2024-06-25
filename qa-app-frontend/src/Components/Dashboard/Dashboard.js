@@ -10,7 +10,7 @@ const Dashboard = ({ allQuizResults }) => {
         if (allQuizResults && Array.isArray(allQuizResults) && allQuizResults.length) {
             const correctAnswers = allQuizResults.map(results => results.filter(result => result.isCorrect).length);
             const wrongAnswers = allQuizResults.map(results => results.filter(result => !result.isCorrect).length);
-            const names = allQuizResults.map(results => results[0]?.quizName || "Quiz")
+            const names = allQuizResults.map(results => results[0]?.quizName || "Quiz");
 
             setChartSeries([
                 {
@@ -32,7 +32,9 @@ const Dashboard = ({ allQuizResults }) => {
     return (
         <div className="dashboard">
             <h1>Dashboard</h1>
-            <ResultChart series={chartSeries} quizNames={quizNames} />
+            <div className="chart-container">
+                <ResultChart series={chartSeries} quizNames={quizNames} />
+            </div>
         </div>
     );
 };

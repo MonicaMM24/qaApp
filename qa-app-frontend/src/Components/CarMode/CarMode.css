@@ -1,10 +1,10 @@
 .car-mode-toggle {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 20px; /* Position 20px from the top */
+    right: 20px; /* Position 20px from the right */
     z-index: 1000;
     padding: 10px 20px;
-    background-color: darkolivegreen;
+    background-color: #146e2f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -12,15 +12,15 @@
 }
 
 .car-mode-toggle:hover {
-    background-color: darkkhaki;
+    background-color: #5b984d;
 }
 
 .car-mode-popup {
     position: fixed;
-    bottom: 60px;
-    right: 20px;
+    top: 60px; /* Position 60px from the top to account for the toggle button */
+    right: 20px; /* Position 20px from the right */
     width: 300px;
-    background-color: darkolivegreen;
+    background-color: #146e2f;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
     border-radius: 5px;
@@ -29,7 +29,7 @@
 
 .button {
     margin-top: 10px;
-    background-color: darkolivegreen;
+    background-color: #146e2f;
     color: white;
     border: none;
     padding: 10px 20px;

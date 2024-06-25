@@ -4,26 +4,28 @@
 }
 
 h2 {
-    color: #2d6a4f; /* Dark green */
+    color: rgba(59, 59, 56, 0.98);
     font-size: 2em;
     margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 p {
     font-size: 1.2em;
-    color: #52796f; /* Medium green */
+    color: rgba(59, 59, 56, 0.98);
+    margin-top: 30px;
 }
 
 .section {
     margin-top: 30px;
     padding: 20px;
-    border: 1px solid #95d5b2; /* Light green */
+    border: 1px solid #dcffca; /* Light green */
     border-radius: 8px;
-    background-color: #d8f3dc; /* Very light green */
+    background-color: #ffffff; /* Very light green */
 }
 
 h3 {
-    color: #2d6a4f; /* Dark green */
+    color: #146e2f; /* Dark green */
     font-size: 1.5em;
     margin-bottom: 10px;
 }
@@ -34,7 +36,7 @@ h3 {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 20px;
-    border: 1px solid #95d5b2; /* Light green */
+    border: 1px solid #dcffca; /* Light green */
     border-radius: 4px;
     background-color: #f1faee; /* Off-white */
 }
@@ -42,14 +44,14 @@ h3 {
 .button {
     padding: 10px 20px;
     color: #fff;
-    background-color: #40916c; /* Medium dark green */
+    background-color: #dcffca; /* Medium dark green */
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .button:hover {
-    background-color: #1b4332; /* Dark green */
+    background-color: #5b984d; /* Dark green */
 }
 
 .help-list ul {
@@ -58,9 +60,23 @@ h3 {
 }
 
 .help-list li {
-    background-color: #f1faee; /* Off-white */
-    border: 1px solid #95d5b2; /* Light green */
+    display: block;
+    width: 100%;
     padding: 10px;
     margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #dcffca; /* Light green */
     border-radius: 4px;
+    background-color: #f1faee; /* Off-white */
+}
+
+.ol {
+    list-style-type: none;
+    padding-left: 0;
+    width: 100%;
+    max-width: 800px;
+    display: block;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px auto;
 }

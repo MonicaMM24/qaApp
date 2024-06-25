@@ -9,34 +9,48 @@ const Home = () => {
             <p>Your go-to resource for QA certifications, support, and automation frameworks.</p>
 
             <div className="section">
-                <h3>Get Help</h3>
-                <p>Have questions about the quizzes or need clarification? Our chatbot is here to assist you!</p>
-                <textarea className="input-box" placeholder="Type your question here..."></textarea>
-                <button className="button">Submit Question</button>
+                <h3>QA Certifications Mock Up</h3>
+                <p>Take a quiz from various certifications and prepare better to take them</p>
                 <div className="help-list">
-                    <h4>Recent Questions:</h4>
+                    <h4>Example of Certifications Questions:</h4>
                     <ul>
-                        <li>What is the difference between functional and non-functional testing?</li>
-                        <li>How do I set up a Selenium WebDriver environment?</li>
-                        <li>What are the key principles of Agile testing?</li>
+                        <li>ISTQB Foundation</li>
+                        <li>Agile Tester</li>
+                        <li>ISTQB Foundation: Static Testing</li>
+                        <li>ISTQB Foundation: Test Analysis and Design</li>
+                        <li>ISTQB Foundation: Test Techniques</li>
                     </ul>
                 </div>
             </div>
 
             <div className="section">
                 <h3>Chatbot Support</h3>
-                <p>Our chatbot helps you by explaining your wrong answers, recommending new questions, and assisting you in finding out your quiz results.</p>
-                <button className="button">Chat with Support</button>
+                <p>When and if you get stuck and don't understand your results the Chatbot helps you by explaining your wrong answers, recommending new questions, and assisting you in finding out your quiz results.</p>
+            </div>
+
+            <div className="section">
+                <h3>Dashboard</h3>
+                <p>View your results in real time and see how you did a quiz!</p>
+            </div>
+
+            <div className="section">
+                <h3>Community</h3>
+                <p>Discuss your quiz issues and not only with fellow QA engineers.</p>
+            </div>
+
+            <div className="section">
+                <h3>Certifications</h3>
+                <p>Find out more about the existing certifications and where you can take them.</p>
             </div>
 
             <div className="section">
                 <h3>Future Plans</h3>
                 <p>We are constantly working to improve and expand our application. Upcoming features include:</p>
-                <ul>
+                <ol>
                     <li>Automation framework creation tools</li>
                     <li>Advanced test case management</li>
                     <li>Integration with popular CI/CD tools</li>
-                </ul>
+                </ol>
             </div>
 
             <CarMode />  {/* Add the CarMode component */}

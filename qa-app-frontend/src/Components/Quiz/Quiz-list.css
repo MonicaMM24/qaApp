@@ -47,7 +47,7 @@ body, ol, li {
 /* Link styling */
 .list li a {
     text-decoration: none;
-    color: #2d6a4f; /* Warm green tone */
+    color: #5b984d; /* Warm green tone */
     font-size: 1.1em;
     padding: 10px 15px;
     width: 100%; /* Make link fill the list item */
